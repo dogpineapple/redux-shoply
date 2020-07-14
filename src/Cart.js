@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import Product from './Product';
 
 function Cart() {
   // shallowEqual doesn't render if quantity changed
+  // fix the rootReducer and add shallowEqual back
   const products = useSelector((store) => store.cart);
   console.log('RENDERING CART...');
 

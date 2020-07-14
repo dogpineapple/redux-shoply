@@ -6,6 +6,7 @@ let inventory = [];
 for (let product in data.products) {
   inventory.push({ id: product, details: data.products[product] });
 }
+//Object.entries(data.products).map
 
 // cart [{id:, quantity:}, {id:, quantity:},....]
 const INITIAL_STATE = { inventory, cart: [] };
@@ -27,12 +28,14 @@ function rootReducer(state = INITIAL_STATE, action) {
       return { ...state, cart: copiedCart };
     case t.REMOVE_FROM_CART:
       // only want to remove one of the same item.
-      copiedCart = state.cart.slice();
+      copiedCart = state.cart.slice(); //shallow copy; lodash, underscore deep-copy
       prodId = action.payload;
+      // use find instead of filter
       foundProduct = copiedCart.filter((product) => product.id === prodId);
 
       if (foundProduct.length > 0) {
         if (foundProduct[0].quantity > 1) {
+          // To make this really pure - copy the object!!
           foundProduct[0].quantity = foundProduct[0].quantity - 1;
         } else {
           copiedCart = copiedCart.filter((product) => product.id !== prodId);
