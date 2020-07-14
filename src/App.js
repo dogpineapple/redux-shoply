@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './rootReducer';
 import CartCounter from './CartCounter';
+import Cart from './Cart';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const store = createStore(
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path='/product/:id'>
             <ProductDetails />
+          </Route>
+          <Route exact path='/cart'>
+            <Cart />
           </Route>
         </Switch>
       </BrowserRouter>

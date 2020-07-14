@@ -1,0 +1,13 @@
+li {
+  margin: 10px;
+  border: 2px solid palevioletred;
+  padding: 20px;
+}
+
+img {
+  display: block;
+}
+
+button {
+  margin: 10px;
+}

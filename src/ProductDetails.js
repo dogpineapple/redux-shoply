@@ -25,7 +25,7 @@ function ProductDetails() {
   const { name, price, description, image_url } = filteredProducts[0].details;
 
   const handleAdd = () => {
-    dispatch(add(id));
+    dispatch(add({ id, details: { name, price, description, image_url } }));
   };
 
   const handleRemove = () => {
