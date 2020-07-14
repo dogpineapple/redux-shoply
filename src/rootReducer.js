@@ -17,7 +17,7 @@ function rootReducer(state = INITIAL_STATE, action) {
       // only want to remove one of the same item.
       let copiedCart = state.cart.slice();
       let idxToDelete = copiedCart.indexOf(action.payload);
-      copiedCart.splice(idxToDelete, 1);
+      if (idxToDelete !== -1) copiedCart.splice(idxToDelete, 1);
       // will remove all of the same item: 
       //      let filteredCart = state.cart.filter(id => id !== action.payload);
       return {...state, cart: copiedCart};

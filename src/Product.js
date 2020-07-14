@@ -6,22 +6,22 @@ function Product({ item }) {
   const dispatch = useDispatch();
 
   const handleAdd = () => {
-    console.log("adding item..", item.id);
     dispatch(add(item.id));
   };
 
   const handleRemove = () => {
-    console.log("removing item..", item.id);
     dispatch(remove(item.id));
   };
 
+  const { name, price, description, image_url } = item.details;
+  
   return (
     <>
       <li>
-        <p>{item.details.name}</p>
-        <p>{item.details.price}</p>
-        <p>{item.details.description}</p>
-        <img width="150px" src={item.details.image_url} alt={item.details.name} />
+        <p>{name}</p>
+        <p>{price}</p>
+        <p>{description}</p>
+        <img width="150px" src={image_url} alt={name} />
         <button onClick={handleAdd}>Add to cart</button>
         <button onClick={handleRemove}>Remove from cart</button>
       </li>

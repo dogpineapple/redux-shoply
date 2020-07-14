@@ -13,10 +13,8 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <CartCounter />
-        <ProductsList />
-      </div>
+      <CartCounter />
+      <ProductsList />
     </Provider>
   );
 }
