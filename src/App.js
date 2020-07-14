@@ -1,9 +1,11 @@
 import React from 'react';
 import ProductsList from './ProductsList';
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import rootReducer from "./rootReducer";
-import CartCounter from "./CartCounter";
+import ProductDetails from './ProductDetails';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './rootReducer';
+import CartCounter from './CartCounter';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const store = createStore(
   rootReducer,
@@ -13,8 +15,17 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <CartCounter />
-      <ProductsList />
+      <BrowserRouter>
+        <CartCounter />
+        <Switch>
+          <Route exact path='/'>
+            <ProductsList />
+          </Route>
+          <Route exact path='/product/:id'>
+            <ProductDetails />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 }

@@ -1,6 +1,7 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { add, remove } from "./actions";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { add, remove } from './actions';
+import { Link } from 'react-router-dom';
 
 function Product({ item }) {
   const dispatch = useDispatch();
@@ -14,18 +15,20 @@ function Product({ item }) {
   };
 
   const { name, price, description, image_url } = item.details;
-  
+
   return (
     <>
       <li>
         <p>{name}</p>
         <p>{price}</p>
         <p>{description}</p>
-        <img width="150px" src={image_url} alt={name} />
+        <Link to={`/product/${item.id}`}>
+          <img width='150px' src={image_url} alt={name} />
+        </Link>
         <button onClick={handleAdd}>Add to cart</button>
         <button onClick={handleRemove}>Remove from cart</button>
       </li>
-      <br/>
+      <br />
     </>
   );
 }
